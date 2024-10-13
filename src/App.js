@@ -3,6 +3,9 @@ import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import './styles.css';  // Assuming styles are placed in styles.css
+import { Route, Routes, useNavigate } from 'react-router-dom';   // React Router imports
+import LoginPage from './LoginPage';  // Import the correct LoginPage
+import SignUpPage from './SignUpPage';  // Import the corrected SignUpPage
 
 // Setup moment.js localizer for react-big-calendar
 const localizer = momentLocalizer(moment);
@@ -10,6 +13,7 @@ const localizer = momentLocalizer(moment);
 function App() {
   const [events, setEvents] = useState([]);  // Store calendar events
   const [isAuthenticated, setIsAuthenticated] = useState(false);  // Track if the user is authenticated
+  const navigate = useNavigate();  // React Router hook for navigation
 
   const handleGoogleLogin = () => {
     // Redirect to Flask's Google OAuth login route
@@ -24,9 +28,9 @@ function App() {
     })
     .then(response => {
       if (response.status === 401) {
-        // If unauthorized, redirect to login
         console.error("Unauthorized, redirecting to login.");
         setIsAuthenticated(false);  // Not authenticated yet
+        navigate('/login');  // Redirect to login if not authenticated
       } else {
         return response.json();
       }
@@ -34,51 +38,30 @@ function App() {
     .then(data => {
       if (data) {
         console.log("Events data:", data);  // Log the fetched events
-
-        // Transform the fetched events to match the format required by react-big-calendar
         const formattedEvents = data.map(event => ({
           title: event.summary || 'No Title',
-          start: new Date(event.start.dateTime || event.start.date),  // Handle both dateTime and all-day events
-          end: new Date(event.end.dateTime || event.end.date),        // Handle both dateTime and all-day events
+          start: new Date(event.start.dateTime || event.start.date),
+          end: new Date(event.end.dateTime || event.end.date),
         }));
         setEvents(formattedEvents);  // Store the formatted events in state
         setIsAuthenticated(true);  // Set authenticated state to true after successful fetch
       }
     })
     .catch(error => console.error("Error fetching events:", error));
-  }, []);  // Empty array ensures this runs once on component mount
+  }, [navigate]);  // Added `navigate` as a dependency to handle redirection
 
-  // If user is not authenticated, show the login page
-  if (!isAuthenticated) {
-    return (
-      <div className="container">
-        <div className="logo">
-          <img id="clock" src="/assets/logo_.svg" alt="Clock Icon" className="logo-icon" />
-          <img id="heading" src="/assets/WHEN__.svg" alt="when??" className="logo-icon" />
-        </div>
-        
-        <div className="login-section">
-          <div className="form-container">
-            <h2>Login</h2>
-            <form>
-              <input type="email" placeholder="Email" />
-              <input type="password" placeholder="Password" />
-              <button type="submit">Login</button>
-            </form>
-            <p className="signup-text">New to WHEN?? <a href="#">Sign up</a></p>
-          </div>
+  // Return the React Router structure
+  return (
+      <Routes>
+        <Route path="/" element={isAuthenticated ? <CalendarPage events={events} /> : <LoginPage handleGoogleLogin={handleGoogleLogin} />} />
+        <Route path="/login" element={<LoginPage handleGoogleLogin={handleGoogleLogin} />} />
+        <Route path="/signup" element={<SignUpPage />} />
+      </Routes>
+  );
+}
 
-          <div className="divider"></div>
-
-          <div className="social-login">
-            <button className="social-btn google" onClick={handleGoogleLogin}>Sign In with Google</button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // If user is authenticated, show the calendar page
+// Calendar page component
+function CalendarPage({ events }) {
   return (
     <div className="App">
       <h1>Google Calendar Events</h1>
