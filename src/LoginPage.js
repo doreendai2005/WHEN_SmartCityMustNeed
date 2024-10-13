@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';  // React Router hook for navigation
+import Formteam from './Formteam';
 
 const LoginPage = ({ handleGoogleLogin }) => {
   const navigate = useNavigate();  // Initialize the useNavigate hook

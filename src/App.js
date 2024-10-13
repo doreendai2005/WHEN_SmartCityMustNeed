@@ -6,6 +6,7 @@ import './styles.css';  // Assuming styles are placed in styles.css
 import { Route, Routes, useNavigate } from 'react-router-dom';   // React Router imports
 import LoginPage from './LoginPage';  // Import the correct LoginPage
 import SignUpPage from './SignUpPage';  // Import the corrected SignUpPage
+import Formteam from './Formteam';
 
 // Setup moment.js localizer for react-big-calendar
 const localizer = momentLocalizer(moment);
@@ -53,9 +54,10 @@ function App() {
   // Return the React Router structure
   return (
       <Routes>
-        <Route path="/" element={isAuthenticated ? <CalendarPage events={events} /> : <LoginPage handleGoogleLogin={handleGoogleLogin} />} />
-        <Route path="/login" element={<LoginPage handleGoogleLogin={handleGoogleLogin} />} />
-        <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/" element={isAuthenticated ? <CalendarPage events={events} /> : <LoginPage handleGoogleLogin={handleGoogleLogin} />} />
+          <Route path="/login" element={<LoginPage handleGoogleLogin={handleGoogleLogin} />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/formteam" component={<Formteam />} />
       </Routes>
   );
 }
