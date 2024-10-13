@@ -154,3 +154,11 @@
   #clock{
     width:20%;
   }
+
+  #googlebutton{
+    background: yellow;
+  }
+
+  #microbutton{
+    background: green;
+  }

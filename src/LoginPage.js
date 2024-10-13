@@ -32,9 +32,9 @@ const LoginPage = ({ handleGoogleLogin }) => {
 
         <div className="social-login">
           <button className="social-btn facebook">Sign In with Facebook</button>
-          <button className="social-btn google" onClick={handleGoogleLogin}>Sign In with Google</button>
+          <button id="googlebutton" className="social-btn google" onClick={handleGoogleLogin}>Sign In with Google</button>
           <button className="social-btn apple">Sign In with Apple</button>
-          <button className="social-btn microsoft">Sign In with Microsoft</button>
+          <button id="microbutton" className="social-btn microsoft">Sign In with Microsoft</button>
         </div>
       </div>
     </div>
