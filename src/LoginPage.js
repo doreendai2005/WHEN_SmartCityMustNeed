@@ -31,10 +31,16 @@ const LoginPage = ({ handleGoogleLogin }) => {
         <div className="divider"></div>
 
         <div className="social-login">
-          <button className="social-btn facebook">Sign In with Facebook</button>
-          <button id="googlebutton" className="social-btn google" onClick={handleGoogleLogin}>Sign In with Google</button>
-          <button className="social-btn apple">Sign In with Apple</button>
-          <button id="microbutton" className="social-btn microsoft">Sign In with Microsoft</button>
+          <button className="social-btn facebook">Sign in with Facebook</button>
+          <button id="googlebutton" className="social-btn google" onClick={handleGoogleLogin}>
+            <img src="/assets/googleicon.jpg" alt="google icon"/>
+            Sign in with Google 
+            </button>
+          <button className="social-btn apple">Sign in with Apple</button>
+          <button id="microbutton" className="social-btn microsoft">
+            <img src="/assets/microicon.jpg" alt="microsoft icon"/>
+            Sign in with Microsoft
+          </button>
         </div>
       </div>
     </div>

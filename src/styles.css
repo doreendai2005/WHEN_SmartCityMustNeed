@@ -154,11 +154,11 @@
   #clock{
     width:20%;
   }
-
-  #googlebutton{
-    background: yellow;
+  #googlebutton img{
+    width: 20px;
+    margin-right:8px;
   }
-
-  #microbutton{
-    background: green;
+  #microbutton img{
+    width: 15px;
+    margin-right:8px;
   }
