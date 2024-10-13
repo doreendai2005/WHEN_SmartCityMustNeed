@@ -5,8 +5,8 @@ const LoginPage = () => {
   return (
     <div className="container">
       <div className="logo">
-        <img src="../public/assets/logo_.svg" alt="Clock Icon" className="logo-icon" />
-        <h1>WHEN??</h1>
+        <img id="clock" src="/assets/logo_.svg" alt="Clock Icon" className="logo-icon" />
+        <img id="heading" src="/assets/WHEN__.svg" alt="when??" className="logo-icon" />
       </div>
       
       <div className="login-section">

@@ -146,4 +146,11 @@
   .social-btn:hover {
     opacity: 0.9;
   }
-  
+
+  #heading{
+    width:100%;
+  }
+
+  #clock{
+    width:20%;
+  }
