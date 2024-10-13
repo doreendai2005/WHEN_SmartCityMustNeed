@@ -3,6 +3,20 @@
 ## Link to Figma Prototype (Try it!!)
 https://www.figma.com/proto/E6ijL6ydgvzU1qMEwrP8Y6/WHEN%3F%3F-browser?node-id=0-1&t=N357wzGumkXUxzv3-1
 
+## Image Gallery
+
+*Login Page*
+![11111728814232_ pic](https://github.com/user-attachments/assets/fecc7259-961e-46c0-ac7e-66cf4ef3ff34)
+
+*Import Calendar Page*
+![11121728814247_ pic](https://github.com/user-attachments/assets/50094725-1669-4542-9ab0-5ed462b3f3ad)
+
+*Calendar Page*
+![11131728814277_ pic](https://github.com/user-attachments/assets/869f6f72-1768-443a-b514-12801c2a49bf)
+
+*Filtered Calendar*
+![11141728814311_ pic](https://github.com/user-attachments/assets/ddd7fb72-d78f-4a05-8ea5-56fe2a4b7d99)
+
 ## Inspiration
 In the heart of evolving smart cities, with digital technologies to reimagine and redefine urban living, we noticed a very important lacuna: collaboration tools. WHEN?? draws its inspiration from our vision to contribute toward a smart city by finding one of the most vital solutions for urban challenges: making it easier for busy people to find the time to connect.
 
