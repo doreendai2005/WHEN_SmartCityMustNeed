@@ -10,14 +10,14 @@ from google.auth.transport.requests import Request
 import json
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Required for session management
+app.secret_key = 's3cr3t_k3y_12345_abcd!'  # Required for session management
 
 # Configure server-side session storage using filesystem
 app.config['SESSION_TYPE'] = 'filesystem'  # You can change this to another type if needed
 Session(app)  # Initialize session management
 
 # Enable CORS and allow requests from React app
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+CORS(app, supports_credentials=True,resources={r"/*": {"origins": "http://localhost:3000"}})
 
 # Load client ID JSON file from Google Cloud
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"  # Only for local development
@@ -90,20 +90,13 @@ def calendar():
         except Exception as e:
             print("Error refreshing credentials:", e)  # Log error
             return jsonify({"error": "Failed to refresh credentials"}), 500
+    
+    service = build('calendar', 'v3', credentials=credentials)
+    events_result = service.events().list(calendarId='primary', maxResults=10, singleEvents=True,
+                                          orderBy='startTime').execute()
+    events = events_result.get('items', [])
 
-    try:
-        # Build the calendar API service
-        service = build('calendar', 'v3', credentials=credentials)
-
-        # Get the next 10 events on the user's calendar
-        events_result = service.events().list(
-            calendarId='primary', maxResults=10, singleEvents=True,
-            orderBy='startTime').execute()
-        events = events_result.get('items', [])
-        return jsonify(events), 200
-    except Exception as e:
-        print("Error fetching events:", e)  # Log error
-        return jsonify({"error": "Failed to fetch events"}), 500
+    return jsonify(events)
 
 def _build_cors_preflight_response():
     response = jsonify()
