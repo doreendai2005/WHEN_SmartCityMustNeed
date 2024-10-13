@@ -7,8 +7,8 @@ const Formteam =() => {
     <div className="container">
       {/* Logo Section */}
       <div className="logo">
-        <img id="clock" src="assets/clock-icon.png" alt="Clock Icon" className="logo-icon" />
-        <img id="header" src="assets/logo.svg" alt="when??" className="logo-icon" />
+        <img id="clock" src="/assets/logo_.svg" alt="Clock Icon" className="logo-icon" />
+        <img id="heading" src="/assets/WHEN__.svg" alt="when??" className="logo-icon" />
       </div>
 
       {/* Buttons Section */}
