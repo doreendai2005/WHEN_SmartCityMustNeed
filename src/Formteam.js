@@ -1,7 +1,8 @@
 import React from 'react';
 import './styles.css'; // Make sure the CSS file is in the same directory
 
-function Formteam() {
+const Formteam =() => {
+  console.log('Formteam component rendered');  // Debugging log
   return (
     <div className="container">
       {/* Logo Section */}

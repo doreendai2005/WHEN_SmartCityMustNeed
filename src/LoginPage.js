@@ -1,12 +1,15 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';  // React Router hook for navigation
-import Formteam from './Formteam';
 
 const LoginPage = ({ handleGoogleLogin }) => {
   const navigate = useNavigate();  // Initialize the useNavigate hook
 
   const handleSignUpClick = () => {
     navigate('/signup');  // Redirect to the sign-up page
+  };
+
+  const handleFormteamClick = () => {
+    navigate('/Formteam');  // Redirect to the sign-up page
   };
 
   return (
@@ -22,7 +25,7 @@ const LoginPage = ({ handleGoogleLogin }) => {
           <form>
             <input type="email" placeholder="Email" />
             <input type="password" placeholder="Password" />
-            <button type="submit">Login</button>
+            <button onClick={handleFormteamClick} type="submit">Login</button>
           </form>
           <p className="signup-text">
             New to WHEN?? <button onClick={handleSignUpClick} className="signup-link">Sign up</button>

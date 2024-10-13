@@ -57,7 +57,7 @@ function App() {
           <Route path="/" element={isAuthenticated ? <CalendarPage events={events} /> : <LoginPage handleGoogleLogin={handleGoogleLogin} />} />
           <Route path="/login" element={<LoginPage handleGoogleLogin={handleGoogleLogin} />} />
           <Route path="/signup" element={<SignUpPage />} />
-          <Route path="/formteam" component={<Formteam />} />
+          <Route path="/formteam" element={<Formteam />} />
       </Routes>
   );
 }
